@@ -1,5 +1,5 @@
 # read data from local file 
-hpc <- read.table("household_power_consumption.txt",header=TRUE, sep=";")
+hpc <- read.table("household_power_consumption.txt",header=TRUE, sep=";", na.string="?")
 # Convert date and time
 hpc$Time <- strptime(paste(hpc$Date, hpc$Time), "%d/%m/%Y %H:%M:%S")
 hpc$Date <- as.Date(hpc$Date, "%d/%m/%Y")

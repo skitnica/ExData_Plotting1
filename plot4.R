@@ -1,5 +1,5 @@
 # read data from local file 
-hpc <- read.table("household_power_consumption.txt",header=TRUE, sep=";")
+hpc <- read.table("household_power_consumption.txt",header=TRUE, sep=";", na.string="?")
 # Convert date and time
 hpc$Time <- strptime(paste(hpc$Date, hpc$Time), "%d/%m/%Y %H:%M:%S")
 hpc$Date <- as.Date(hpc$Date, "%d/%m/%Y")
@@ -14,4 +14,4 @@ with(data, plot(data$Time,Sub_metering_1, type="l", col="Black", xlab="", ylab="
 with(data, points(data$Time,Sub_metering_2, type="l", col="Red"))
 with(data, points(data$Time,Sub_metering_3, type="l", col="Blue"))
 legend("topright", col=c("Black","Red","Blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), lty=1, cex=0.5, box.lty=0, inset = .02)
-plot(data$Time, data$Global_reactive_power,type="l",col="Black", xlab="")
+plot(data$Time, data$Global_reactive_power,type="l",col="Black", xlab="datetime")
